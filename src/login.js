@@ -157,6 +157,10 @@ export const handler = async (event, context, callback) => {
       refresh_token: tokens.refreshToken,
       Key: user.get('key'),
       PrivateKey: privateKey ? privateKey.toString('utf8') : null,
+      Kdf: 0,
+      KdfIterations: user.get('kdfIterations'),
+      ResetMasterPassword: false,
+      scope: "api offline_access"
     }));
   } catch (e) {
     callback(null, utils.serverError('Internal error', e));
